@@ -40,8 +40,28 @@ export const drawLetters = () => {
   return hand;
 };
 
+const frequency = (inputI) => {
+  const counts = {};
+  for (const elm of inputI) {
+    counts[elm] = counts[elm] ? counts[elm] + 1 : 1;
+  }
+
+  return counts;
+};
+
 export const usesAvailableLetters = (input, lettersInHand) => {
   // Implement this method for wave 2
+  const input_count = frequency(input);
+  const hand_count = frequency(lettersInHand);
+  for (const letter of input) {
+    if (lettersInHand.indexOf(letter) == -1) {
+      return false;
+    } else if (hand_count[letter] < input_count[letter]) {
+      return false;
+    }
+  }
+
+  return true;
 };
 
 export const scoreWord = (word) => {
