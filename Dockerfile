@@ -13,4 +13,5 @@ ARG SUBMISSION_SUBFOLDER
 ADD $SUBMISSION_SUBFOLDER /app
 
 RUN yarn add
+RUN yarn build
 RUN chmod +x test.sh
